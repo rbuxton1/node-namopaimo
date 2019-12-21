@@ -1,0 +1,42 @@
+
+version: '3.1'
+
+services:
+
+  namopaimo:
+    image: namopaimo
+    restart: unless-stopped
+    container_name: namopaimo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:3000
+    environment:
+      DB: namopaimo-db
+      DB_PASS: -
+      EMAIL_PASS: -
+
+  namopaimo-db:
+    image: mysql
+    restart: unless-stopped
+    container_name: namopaimo-db
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: nmpm
+      MYSQL_USER: namopaimoUser
+      MYSQL_PASSWORD: -
+      MYSQL_ROOT_PASSWORD: -
+    command: --default-authentication-plugin=mysql_native_password
+
+  namopaimo-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: namopaimo-phpmyadmin
+    links:
+      - namopaimo-db
+    environment:
+      PMA_HOST: namopaimo-db
+      PMA_PORT: 3306
+    ports:
+      - 81:80
