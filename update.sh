@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 echo "Stoping any running instances. . ."
 docker-compose stop
 echo "DONE!"
