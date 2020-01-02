@@ -65,7 +65,7 @@ app.post("/register", function(req, res){
           from:"namopaimo.registrar@gmail.com",
           to: req.body.email,
           subject: "NaMoPaiMo Completion Code",
-          text: "Your completion code for the NaMoPaiMo 2020 year is: " + code + ". Please visit the completion page (namopaimo.com/complete) and supply this code to complete your entry. Thanks! -NaMoPaiMo Staff"
+          text: " Your completion code for NaMoPaiMo 2020 is: '" + code + "' Please visit the completion page (namopaimo.com/complete) and use this code to upload a photo of your finished entry. Thanks! -NaMoPaiMo Staff"
         }
         transporter.sendMail(mailOptions, function(mailErr, info){
           if(mailErr){
