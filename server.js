@@ -53,9 +53,10 @@ app.get("/", function(req, res){
 })
 
 app.post("/register", function(req, res){
+  var address = req.body.address + " " + req.body.address2 + ", " + req.body.city + " " + req.body.state + " " + req.body.zip
   sql = "INSERT INTO `registrar`(`id`, `first`, `last`, `email`, `address`, `country`, `level`, `age`, `desc`, `mediums`, `color`, `extra`, `paid`, `code`) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)"
   makeid(idLen, function(code){
-    db.query(sql, [req.body.first, req.body.last, req.body.email, req.body.address, req.body.country,
+    db.query(sql, [req.body.first, req.body.last, req.body.email, address, req.body.country,
                    req.body.level, req.body.age, req.body.desc, req.body.medium, req.body.color, req.body.data, req.body.fee, code], function(err, sqlRes){
       if(err){
         console.log(err)
@@ -100,6 +101,22 @@ app.get("/completed", function(req, res){
   db.query(sql, function(err, data){
     res.render("completed", {data: data})
   })
+})
+
+app.get("/addressverif", function(req, res){
+  res.render("addressverif")
+})
+
+app.post("/address-verify", function(req, res){
+  var address = req.body.address + " " + req.body.address2 + ", " + req.body.city + " " + req.body.state + " " + req.body.zip
+  db.query("UPDATE registrar SET address = ? WHERE code = ?", [address, req.body.key], function(err, sql){
+    console.log(sql);
+    if(!err) res.redirect("/addresscomplete")
+  })
+})
+
+app.get("/addresscomplete", function(req, res){
+  res.render("addressverif-complete")
 })
 
 app.listen(3000, function(){ console.log("Listening on port 3000") })

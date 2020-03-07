@@ -1,0 +1,64 @@
+<html>
+<title>NaMoPaiMo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+<div class="w3-container">
+  <div class="w3-display-container w3-light-gray" style="height:100%;">
+    <div class="w3-display-middle">
+      <div class="w3-card-4">
+        <header class="w3-container w3-green w3-center">
+          <h1>Address verification</h1>
+        </header>
+        <div class="w3-container w3-center">
+          <form action="/address-verify/" method="post" class="w3-container">
+            <div class='w3-row-padding'> <!-- Completion Key -->
+              <div class='w3-quarter'>
+                <p>
+                  Completion Key:
+                </p>
+              </div>
+              <div class='w3-threequarter w3-container'>
+                <input class="w3-input" type="text" name="key" placeholder="abcde12345" maxlength="10" required>
+              </div>
+            </div>
+            <div class='w3-row-padding'> <!-- Address Line 1-->
+              <div class='w3-quarter'>
+                <p>
+                  Address <br>(English/Latin characters only)
+                </p>
+              </div>
+              <div class='w3-threequarter'>
+                <input class="w3-input" type="text" name="address" placeholder="Address Line 1" maxlength="200">
+                <input class="w3-input" type="text" name="address2" placeholder="Address Line 2" maxlength="30">
+                <input class="w3-input" type="text" name="city" placeholder="City" maxlength="30">
+                <input class="w3-input" type="text" name="state" placeholder="State" maxlength="30">
+                <input class="w3-input" type="text" name="zip" placeholder="ZIP code" maxlength="10">
+              </div>
+            </div>
+            <div class='w3-row-padding'> <!-- Address Line 2 (Country)-->
+              <div class='w3-quarter'>
+                <p>
+                  Country
+                </p>
+              </div>
+              <div class='w3-threequarter'>
+                <input class="w3-input" type="text" name="country" placeholder="USA" maxlength="50" required>
+              </div>
+            </div>
+            <input type="submit" class="w3-btn w3-dark-gray" value="Submit" name="submit">
+          </form>
+        </div>
+        <footer class="w3-container w3-green w3-center">
+          <h5>NaMoPaiMo 2020</h5>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
